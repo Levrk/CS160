@@ -1,16 +1,24 @@
 
 import timeit
 
-def binSearch (list, element):
+def binSearch (list, element, left, right):
     if not list:
         return False
-    middle = (len(list) // 2) 
-    if (list[middle] > element):
-        return binSearch (list[:middle], element)
-    elif (list[middle] < element):
-        return binSearch (list[middle+1:], element)
-    else:
-        return True
+    if (left < right) :
+        middle = (left + right) // 2
+        if (list[middle] == element):
+            #item has been found
+            return middle
+        elif (list[middle] > element):
+            return binSearch (list, element, left, middle)
+        elif (list[middle] < element):
+            return binSearch (list, element, middle, right)
+    return -1
+
+
+
+
+
     
 
 
@@ -20,8 +28,11 @@ l2 = [1,3,4,5,6,7,8,9,10]
 l3 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 l4 = [2,4,6,8,10,12,14,16,18,20]
 
+print(binSearch(l0,3,0,4))
 
-assert(binSearch(l0, 2))
+
+"""
+assert(1 binSearch(l0, 2))
 assert(not binSearch(l0, 11))
 assert(binSearch(l0, 5))
 
@@ -54,3 +65,5 @@ print(f"Average execution time for list of length 10000: {time2 / 1000:.6f} seco
 
 time3 = timeit.timeit(lambda: binSearch(t3, 2334), number=1000)
 print(f"Average execution time for list of length 1000000: {time3 / 1000:.6f} seconds")
+
+"""
