@@ -3,10 +3,10 @@ import timeit
 
 def binSearchAux (list, element, left, right):
     # helper function to limit redundant arguments in original function call
-    if not list:
-        #if the list is empty
+    if not (left < right):
+        #list has been exhausted
         return -1
-    if (left < right) :
+    else :
         #if there is still elements to be evaluated
         middle = (left + right) // 2
         #identify the mid point
@@ -19,8 +19,7 @@ def binSearchAux (list, element, left, right):
         elif (list[middle] < element):
             #item is in upper half of list
             return binSearchAux (list, element, middle+1, right)
-    #item has not been found
-    return -1
+
 
 def binSearch (list, element):
     #calls helper function 
@@ -61,6 +60,8 @@ assert(10 == binSearch(l3, 11))
 assert(-1 == binSearch(l4, 1))
 assert(-1 == binSearch(l4, 13))
 assert(9 == binSearch(l4, 20))
+assert(-1 == binSearch(l5, 20))
+
 
 
 
