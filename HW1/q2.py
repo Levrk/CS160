@@ -4,7 +4,7 @@ import timeit
 def binSearchAux (list, element, left, right):
     # helper function to limit redundant arguments in original function call
     if not (left < right):
-        #list has been exhausted
+        #list is empty
         return -1
     else :
         #if there is still elements to be evaluated
@@ -15,9 +15,11 @@ def binSearchAux (list, element, left, right):
             return middle
         elif (list[middle] > element):
             #item is in lower half of list
+            #use midpoint as the new right index
             return binSearchAux (list, element, left, middle)
         elif (list[middle] < element):
             #item is in upper half of list
+            #use midpoint+1 as the new left index
             return binSearchAux (list, element, middle+1, right)
 
 
