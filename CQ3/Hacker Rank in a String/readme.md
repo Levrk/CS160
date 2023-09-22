@@ -1,0 +1,3 @@
+The time complexity for this algorithm is linear. it uses the helper function "helper" which runs in linear time because it calls itself recursively for each letter in the input. The only extra thing the function hackerankInAString does outside of call its helper function is define a single variable so it is still just linear time overall. 
+
+The space complexity for this algorithm is constant because there is only one variable defined which is "compare" and that is not defined in the recursive function. Because it is defined outside of the recursive call, this space only has to be allocated once, allowing the algorithm to run with constant space complexity.
