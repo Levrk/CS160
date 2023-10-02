@@ -49,8 +49,7 @@ def traverse(node):
 
         #traverse the current node
         if node.points != []:
-            #print(node.name + " : " + str(node.points))
-            print("This is " + node.name)
+            print(node.name + " : " + str(node.points)) 
         else:
             print("This is " + node.name)
 
