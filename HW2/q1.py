@@ -1,29 +1,21 @@
-# a node is just a 2d space 
-
-# the head node is the entire plane
-
-# a leaf is a dead space (no longer being partitioned)
-
-# a node is a living space (still being actively partitioned)
-
-# we need a data structure for nodes/leaves that can represent any 2d space 
-
-# our data structure is a list of spaces 
 
 class Node:
     def __init__(self, left = None,right = None, points = None, name=None):
-        #left and right can be either nodes or leafs
+        #left and right are the current nodes left and right children
         self.left = left
         self.right = right
-        #area describes the space indicated by a leaf
+        #area describes the space indicated by a leaf. This will be empty if the node is not a leaf
         self.area = []
+        #this is the nodes name(e.g. "Node 1", "Leaf 3" or "Head Node") used by the traverse function for readability
         self.name = name
 
 
 def makeTree(n):
+    #make sure that the user inputted a valid argument
     if ( n > 7 or n < 1) :
         print("please select one of 7 lines by user the function with an integer argument between 1-7")
         return
+    #Define our node instances with placeholder values
     HN = Node(None, None, [],"Head Node")
     N1 = Node(None, None, [],"Node 1")
     N2 = Node(None, None, [],"Node 2")
@@ -39,7 +31,7 @@ def makeTree(n):
     L6 = Node(None, None, [],"Leaf 6")
     L7 = Node(None, None, [],"Leaf 7")
     L8 = Node(None, None, [],"Leaf 8")
-    #user inputs which one should go first
+    #create a list of node instances and node.area values to be references during the creation of our tree
     leafs = [L1,L2,L3,L4,L5,L6,L7,L8]
     nodes = [N1,N2,N3,N4,N5,N6]
     list = [["y",1,'l'],   ["x",-1.5,'l'] ,   ["x", 1.3, 'r'],   ["y", -1, 'r'],  ["x",-.4,'l'],  ["y",0,'r'] ,  ["-1.25", .3, 'l']]
@@ -48,15 +40,13 @@ def makeTree(n):
     L1.area = list[n-1]
     if (L1.area[2] == 'l') :
         HN.left = L1
-        HN.right = N1
-        print(current.name)
-        print(str(current.left.area) + "//     \\\\" + current.right.name)
+        HN.right = N1     
+        #print(str(current.left.area) + "//     \\\\" + current.right.name)
         current = HN.right 
     else :
         HN.right = L1
         HN.left = N1
-        print(current.name)
-        print(current.left.name + "//     \\\\" + str(current.right.area))
+        #print(current.left.name + "//     \\\\" + str(current.right.area))
         current = HN.left
     #Then we remove that item from list and iterate over list
     del list[n-1]
@@ -97,8 +87,8 @@ def makeTree(n):
             current = current.left
         count+=1
         #then we move on to the next item in the list and iterate the counter
+    #return the head node instance after the tree has been made
     return HN
-
 
 
 
@@ -117,9 +107,17 @@ def traverse(node):
         #recursively traverse the right child
         traverse(node.right)
 
-test = makeTree(1)
+def main(n):
+    #our main function connects traverse and makeTree to execute an in-order traversal of the tree we created in makeTree based on the user input value
+    traverse(makeTree(n))
 
-traverse(test)
+main(1)
+main(2)
+main(3)
+main(4)
+main(5)
+main(6)
+main(7)
 
 
 
