@@ -1,0 +1,3 @@
+This function runs in linear time complexity because the outer for loop iterates once for each integer in the input array. The inner for loop runs in less than linear time but when calculating time complexity we only count the worst part of the function as this will be the most significant contributor to time complexity as the input size grows. 
+
+This function runs in linear space complexity because new variables are defined within each iteration of the for loop which is executed once for each integer in the array.
