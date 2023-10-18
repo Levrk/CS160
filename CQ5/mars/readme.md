@@ -1,0 +1,3 @@
+Time complexity is linear because the number of times the code within the while loop is executed is based on the size of the input. The while loop is executed once for each letter in the input and the internal for loop is executed a constant number of times which is 3.
+
+The space complexity is constant because the function only uses two variables which are defined outside of the while loop because the function is only called once and these variables are only defined once we know the space complexity is constant.
