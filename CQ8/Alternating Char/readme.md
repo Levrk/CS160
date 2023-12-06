@@ -1,19 +1,20 @@
-public static int helper(String s, int index, int count) {  
-        if (index == s.length()) {
-            return count;
-        }
-        if (s.charAt(index) == s.charAt(index - 1)) {
-            count++;
-        }
-        return helper(s, index + 1, count);
 
-        }
 
-    public static int alternatingCharacters(String s) { 
-        int output = (helper(s,1,0));
-        return output;
-    }
+        public static int helper(String s, int index, int count) {  
+                if (index == s.length()) {
+                    return count;
+                }
+                if (s.charAt(index) == s.charAt(index - 1)) {
+                    count++;
+                }
+                return helper(s, index + 1, count);
+        
+                }
 
+        public static int alternatingCharacters(String s) { 
+                int output = (helper(s,1,0));
+                return output;
+            }
 
 Time Complexity:
 
